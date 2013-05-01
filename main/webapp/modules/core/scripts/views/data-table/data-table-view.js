@@ -34,7 +34,7 @@ OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 function DataTableView(div) {
   this._div = div;
 
-  this._pageSize = 10;
+  this._pageSize = 25;
   this._showRecon = true;
   this._collapsedColumnNames = {};
   this._sorting = { criteria: [] };
@@ -182,7 +182,7 @@ DataTableView.prototype._renderPagingControls = function(pageSizeControls, pagin
   }
 
   $('<span>'+$.i18n._('core-views')["show"]+': </span>').appendTo(pageSizeControls);
-  var sizes = [ 5, 10, 25, 50 ];
+  var sizes = [ 5, 10, 25, 50, 100 ];
   var renderPageSize = function(index) {
     var pageSize = sizes[index];
     var a = $('<a href="javascript:{}"></a>')
