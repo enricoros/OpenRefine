@@ -64,7 +64,7 @@ Refine.reportException = function(e) {
 function resize() {
   var header = $("#header");
 
-  var leftPanelWidth = 300;
+  var leftPanelWidth = 360;
   var width = $(window).width();
   var top = $("#header").outerHeight();
   var height = $(window).height() - top;
