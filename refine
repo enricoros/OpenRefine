@@ -641,7 +641,9 @@ run() {
     check_running
     
     if [ "$RUNNING" ] ; then
-        warn "OpenRefine is already running."
+        echo "OpenRefine is already running."
+        echo "KILLING IT"
+        stop
     fi
     
     if [ ! -d $REFINE_CLASSES_DIR ] ; then
@@ -696,6 +698,11 @@ run() {
         $RUN_CMD &
         REFINE_PID="$!"
     fi
+}
+
+stop() {
+    ps aux | grep refine.webapp | awk -F\  '{print $2}' | xargs kill -9
+    sleep 0.5
 }
     
 broker_build() {
@@ -991,6 +998,7 @@ case "$ACTION" in
   cpd) cpd;;  
   jslint) jslint;;  
   run) run;;  
+  stop) stop;;
   broker) broker_run;;
   broker_appengine_run) broker_appengine_run $1 $2;;
   broker_appengine_upload) broker_appengine_upload $1 $2;;
